@@ -5,7 +5,10 @@ const bodyParser = require('body-parser');
 const twilio = require('twilio');
 const cors = require('cors');
 const app = express();
-app.use(cors()); 
+app.use(cors({
+  origin: 'https://bhoomi-frontend-28oa.vercel.app'
+}));
+
 app.use(bodyParser.json());
 
 // Twilio setup
@@ -68,6 +71,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
