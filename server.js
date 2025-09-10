@@ -59,10 +59,6 @@ app.post('/send-feedback', (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   });
 });
-app.post("/api/feedback", (req, res) => {
-  // handle feedback submission
-  res.json({ message: "Feedback received!" });
-});
 
 app.get("/", (req, res) => {
   res.send("Backend is running!");
@@ -72,6 +68,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
