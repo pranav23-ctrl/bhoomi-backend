@@ -43,7 +43,7 @@ app.post('/send-feedback', (req, res) => {
   const feedbackMessage = `Feedback from ${name} (${phone}):\n${message}`;
 
   // List of phone numbers to send feedback to
-  const feedbackRecipients = ["+917310543589"]; // update with actual numbers
+  const feedbackRecipients = ["+919444887887","+919444950950"]; // update with actual numbers
 
   // Send SMS to all recipients
   Promise.all(feedbackRecipients.map(toNumber =>
@@ -71,6 +71,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
