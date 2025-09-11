@@ -35,6 +35,25 @@ app.post('/send-sms', (req, res) => {
     res.status(500).json({ success: false, error: error.message });
   });
 });
+app.post('/send-end-sms', (req, res) => {
+  const { name, phone, estimatedTime, totalTime, landmarksCovered } = req.body;
+
+  const endMessage = `Mr/Miss ${name}, phone number ${phone} is reaching in ${estimatedTime}. Total time taken to reach - ${totalTime}. Total landmarks covered ${landmarksCovered} /25.`;
+
+  client.messages.create({
+    body: endMessage,
+    from: twilioNumber,
+    to: phone // This is the user's number entered in the form
+  })
+  .then(message => {
+    console.log("End message sent:", message.sid);
+    res.status(200).json({ success: true, sid: message.sid });
+  })
+  .catch(error => {
+    console.error("Error sending message:", error);
+    res.status(500).json({ success: false, error: error.message });
+  });
+});
 // API endpoint to send feedback SMS
 app.post('/send-feedback', (req, res) => {
   const { name, phone, message } = req.body;
@@ -71,6 +90,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
