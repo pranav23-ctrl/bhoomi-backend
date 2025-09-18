@@ -6,7 +6,7 @@ const twilio = require('twilio');
 const cors = require('cors');
 const app = express();
 app.use(cors({
-  origin: 'https://bhoomi-frontend-vun7.vercel.app'
+  origin: 'https://www.bhoomifarmlands.com'
 }));
 
 app.use(bodyParser.json());
@@ -90,6 +90,7 @@ const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
 
 
 
